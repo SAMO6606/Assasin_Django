@@ -1,0 +1,106 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3>{{ product_header.name1 }}</h3>
+          <span class="breadcrumb"><a href="#">{{ product_header.name2 }}</a>  >  <a href="#">{{ product_header.name3 }}</a>  >{{ product_header.name4 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="single-product section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="left-image">
+            <img src="{{ single_product.img.url }}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 align-self-center">
+          <h4>{{ single_product.name }}</h4>
+          <span class="price"><em>{{ single_product.price1 }}</em>{{ single_product.price2 }}</span>
+          <p>{{ single_product.text }}</p>
+          <form id="qty" action="#">
+            <input type="qty" class="form-control" id="1" aria-describedby="quantity" placeholder="1">
+            <button type="submit"><i class="fa fa-shopping-bag"></i>{{ single_product.button_name }}</button>
+          </form>
+          <ul>
+            <li><span>{{ single_product.category1 }}:</span>{{ single_product.category1_a }}</li>
+            <li><span>{{ single_product.category2 }}</span> <a href="#">{{ single_product.category2_a }}</a>
+            <li><span>{{ single_product.category3 }}</span> <a href="#">{{ single_product.category3_a }}</a>
+          </ul>
+        </div>
+        <div class="col-lg-12">
+          <div class="sep"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="more-info">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="tabs-content">
+            <div class="row">
+              <div class="nav-wrapper ">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">{{ more_info.button_name1 }}</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">{{ more_info.button_name2 }}</button>
+                  </li>
+                </ul>
+              </div>              
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                  <p>{{ more_info.text1 }}</p>
+                  <br>
+                  <p>{{ more_info.text2 }}</p>
+                </div>
+                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                  <p>{{ more_info.text3 }} <br><br>{{ more_info.text4 }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section categories related-games">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <h6>{{ related.name1 }}</h6>
+            <h2>{{ related.name2 }}</h2>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="main-button">
+            <a href="{% url 'shop' %}">{{ related.button_name }}</a>
+          </div>
+        </div>
+
+        {% for i in related_object %}
+        <div class="col-lg col-sm-6 col-xs-12">
+          <div class="item">
+            <h4>{{ i.name }}</h4>
+            <div class="thumb">
+              <a href="{% url 'product-details' %}"><img src="{{ i.img.url }}" alt=""></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+ {% endblock %}

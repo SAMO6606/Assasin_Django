@@ -1,0 +1,179 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+  <div class="main-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="caption header-text">
+            <h6>{{ banner.name1 }}</h6>
+            <h2>{{ banner.name2 }}</h2>
+            <p>{{ banner.text }}</p>
+            <div class="search-input">
+              <form id="search" action="#">
+                <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                <button role="button">{{ banner.button_name }}</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 offset-lg-2">
+          <div class="right-image">
+            <img src="{{ banner.img.url }}" alt="">
+            <span class="price">{{ banner.price }}</span>
+            <span class="offer">{{ banner.offer }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="container">
+      <div class="row">
+        {% for i in feature %}
+        <div class="col-lg-3 col-md-6">
+          <a href="#">
+            <div class="item">
+              <div class="image">
+                <img src="{{ i.img.url }}" alt="" style="max-width: 44px;">
+              </div>
+              <h4>{{ i.name }}</h4>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="section trending">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <h6>{{ trending.name1 }}</h6>
+            <h2>{{ trending.name2 }}</h2>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="main-button">
+            <a href="{% url 'shop' %}">{{ trending.button_name }}</a>
+          </div>
+        </div>
+        {% for i in trending_object %}
+        <div class="col-lg-3 col-md-6">
+          <div class="item">
+            <div class="thumb">
+              <a href="{% url 'product-details' %}"><img src="{{ i.img.url }}" alt=""></a>
+              <span class="price"><em>{{ i.price1 }}</em>{{ i.price2 }}</span>
+            </div>
+            <div class="down-content">
+              <span class="category">{{ i.category }}</span>
+              <h4>{{ i.name }}</h4>
+              <a href="{% url 'product-details' %}"><i class="fa fa-shopping-bag"></i></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="section most-played">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <h6>{{ mostplayed.name1 }}</h6>
+            <h2>{{ mostplayed.name2 }}</h2>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="main-button">
+            <a href="{% url 'shop' %}">{{ mostplayed.button_name }}</a>
+          </div>
+        </div>
+        {% for i in mostplayed_object %}
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="item">
+            <div class="thumb">
+              <a href="{% url 'product-details' %}"><img src="{{ i.img.url }}" alt=""></a>
+            </div>
+            <div class="down-content">
+                <span class="category">{{ i.category }}</span>
+                <h4>{{ i.name }}</h4>
+                <a href="{% url 'product-details' %}">{{ i.button_name }}</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="section categories">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="section-heading">
+            <h6>{{ category.name1 }}</h6>
+            <h2>{{ category.name2 }}</h2>
+          </div>
+        </div>
+        {% for i in category_object %}
+        <div class="col-lg col-sm-6 col-xs-12">
+          <div class="item">
+            <h4>{{ i.name }}</h4>
+            <div class="thumb">
+              <a href="{% url 'product-details' %}"><img src="{{ i.img.url }}" alt=""></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  <div class="section cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="shop">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="section-heading">
+                  <h6>{{ shop.name1 }}</h6>
+                  <h2>{{ shop.name2 }} <em>{{ shop.name3_blue }}</em> For You!</h2>
+                </div>
+                <p>{{ shop.text }}</p>
+                <div class="main-button">
+                  <a href="{% url 'shop' %}">{{ shop.button_name }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 offset-lg-2 align-self-end">
+          <div class="subscribe">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="section-heading">
+                  <h6>{{ newsletter.name1 }}</h6>
+                  <h2>{{ newsletter.name2 }}  <em>{{ newsletter.name3_blue }} </em>{{ newsletter.name4 }}</h2>
+                </div>
+                <div class="search-input">
+                  <form id="subscribe" action="#">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your email...">
+                    <button type="submit">{{ newsletter.button_name }}</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
